@@ -57,9 +57,9 @@ final List<BookModel> bookModel = [
 
 class MainController extends GetxController {
   Timer? _debounce;
-  List<List<BookListModel>> bookListModel = [];
+  List<List<BookListModel>> bookListModel = _getFormattedBookList(bookModel);
 
-  void filterBook(String query) {
+  void onSearchBook(String query) {
     if (_debounce?.isActive ?? false) _debounce?.cancel();
     _debounce = Timer(const Duration(milliseconds: 500), () {
       bookListModel =
@@ -67,12 +67,6 @@ class MainController extends GetxController {
 
       update();
     });
-  }
-
-  void getBooks() {
-    bookListModel = _getFormattedBookList(bookModel);
-
-    update();
   }
 }
 

@@ -15,7 +15,7 @@ class MainPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: ResColors.bgGrey,
       appBar: AppBar(
-        title: Text('Потрясающая библиотека'),
+        title: const Text('Потрясающая библиотека'),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -24,7 +24,7 @@ class MainPage extends StatelessWidget {
             TextField(
               controller: _textController,
               onChanged: (value) =>
-                  Get.find<MainController>().filterBook(value),
+                  Get.find<MainController>().onSearchBook(value),
             ),
             GetBuilder<MainController>(
                 builder: (_) => Column(
@@ -48,11 +48,6 @@ class MainPage extends StatelessWidget {
                         return const SizedBox();
                       }).toList(),
                     )),
-            ElevatedButton(
-                onPressed: () {
-                  Get.find<MainController>().getBooks();
-                },
-                child: Text('Нажми меня'))
           ],
         ),
       ),
