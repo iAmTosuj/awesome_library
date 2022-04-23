@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:library_web/generated/assets.dart';
 
 class BookDetailPage extends StatelessWidget {
-  const BookDetailPage({Key? key}) : super(key: key);
+  final int id;
+
+  const BookDetailPage({
+    Key? key,
+    required this.id,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,11 +19,14 @@ class BookDetailPage extends StatelessWidget {
                 height: 500,
                 child: Row(
                   children: [
-                    Image.asset(
-                      Assets.imagesTn,
-                      fit: BoxFit.cover,
-                      height: 500,
-                      width: 400,
+                    Hero(
+                      tag: 'image_${id}',
+                      child: Image.asset(
+                        Assets.imagesTn,
+                        fit: BoxFit.cover,
+                        height: 500,
+                        width: 400,
+                      ),
                     ),
                     const SizedBox(
                       width: 24,

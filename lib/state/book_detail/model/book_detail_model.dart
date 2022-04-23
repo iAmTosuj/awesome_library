@@ -9,5 +9,6 @@ class BookDetailModel with _$BookDetailModel {
     required String name,
     required String author,
     required String category,
+    required int id,
   }) = _BookDetailModel;
 }

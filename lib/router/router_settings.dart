@@ -14,7 +14,13 @@ class RouterSettings {
             GoRoute(
               path: RouteInfo.bookDetail.path,
               name: RouteInfo.bookDetail.name,
-              builder: (context, state) => const BookDetailPage(),
+              builder: (context, state) {
+                final int id = int.parse(state.params['id']!);
+
+                return BookDetailPage(
+                  id: id,
+                );
+              },
             ),
           ]),
     ],

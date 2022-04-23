@@ -20,21 +20,23 @@ mixin _$BookListModel {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String name, String path, String author, String category)
+            String name, String path, String author, String category, int id)
         bookModel,
     required TResult Function(String name) bookCategory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String name, String path, String author, String category)?
+    TResult Function(
+            String name, String path, String author, String category, int id)?
         bookModel,
     TResult Function(String name)? bookCategory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String name, String path, String author, String category)?
+    TResult Function(
+            String name, String path, String author, String category, int id)?
         bookModel,
     TResult Function(String name)? bookCategory,
     required TResult orElse(),
@@ -101,7 +103,7 @@ abstract class $BookModelCopyWith<$Res>
   factory $BookModelCopyWith(BookModel value, $Res Function(BookModel) then) =
       _$BookModelCopyWithImpl<$Res>;
   @override
-  $Res call({String name, String path, String author, String category});
+  $Res call({String name, String path, String author, String category, int id});
 }
 
 /// @nodoc
@@ -119,6 +121,7 @@ class _$BookModelCopyWithImpl<$Res> extends _$BookListModelCopyWithImpl<$Res>
     Object? path = freezed,
     Object? author = freezed,
     Object? category = freezed,
+    Object? id = freezed,
   }) {
     return _then(BookModel(
       name: name == freezed
@@ -137,6 +140,10 @@ class _$BookModelCopyWithImpl<$Res> extends _$BookListModelCopyWithImpl<$Res>
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as String,
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -148,7 +155,8 @@ class _$BookModel implements BookModel {
       {required this.name,
       required this.path,
       required this.author,
-      required this.category});
+      required this.category,
+      required this.id});
 
   @override
   final String name;
@@ -158,10 +166,12 @@ class _$BookModel implements BookModel {
   final String author;
   @override
   final String category;
+  @override
+  final int id;
 
   @override
   String toString() {
-    return 'BookListModel.bookModel(name: $name, path: $path, author: $author, category: $category)';
+    return 'BookListModel.bookModel(name: $name, path: $path, author: $author, category: $category, id: $id)';
   }
 
   @override
@@ -172,7 +182,8 @@ class _$BookModel implements BookModel {
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality().equals(other.path, path) &&
             const DeepCollectionEquality().equals(other.author, author) &&
-            const DeepCollectionEquality().equals(other.category, category));
+            const DeepCollectionEquality().equals(other.category, category) &&
+            const DeepCollectionEquality().equals(other.id, id));
   }
 
   @override
@@ -181,7 +192,8 @@ class _$BookModel implements BookModel {
       const DeepCollectionEquality().hash(name),
       const DeepCollectionEquality().hash(path),
       const DeepCollectionEquality().hash(author),
-      const DeepCollectionEquality().hash(category));
+      const DeepCollectionEquality().hash(category),
+      const DeepCollectionEquality().hash(id));
 
   @JsonKey(ignore: true)
   @override
@@ -192,33 +204,35 @@ class _$BookModel implements BookModel {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String name, String path, String author, String category)
+            String name, String path, String author, String category, int id)
         bookModel,
     required TResult Function(String name) bookCategory,
   }) {
-    return bookModel(name, path, author, category);
+    return bookModel(name, path, author, category, id);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String name, String path, String author, String category)?
+    TResult Function(
+            String name, String path, String author, String category, int id)?
         bookModel,
     TResult Function(String name)? bookCategory,
   }) {
-    return bookModel?.call(name, path, author, category);
+    return bookModel?.call(name, path, author, category, id);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String name, String path, String author, String category)?
+    TResult Function(
+            String name, String path, String author, String category, int id)?
         bookModel,
     TResult Function(String name)? bookCategory,
     required TResult orElse(),
   }) {
     if (bookModel != null) {
-      return bookModel(name, path, author, category);
+      return bookModel(name, path, author, category, id);
     }
     return orElse();
   }
@@ -260,13 +274,15 @@ abstract class BookModel implements BookListModel {
       {required final String name,
       required final String path,
       required final String author,
-      required final String category}) = _$BookModel;
+      required final String category,
+      required final int id}) = _$BookModel;
 
   @override
   String get name => throw _privateConstructorUsedError;
   String get path => throw _privateConstructorUsedError;
   String get author => throw _privateConstructorUsedError;
   String get category => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   $BookModelCopyWith<BookModel> get copyWith =>
@@ -340,7 +356,7 @@ class _$BookCategory implements BookCategory {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String name, String path, String author, String category)
+            String name, String path, String author, String category, int id)
         bookModel,
     required TResult Function(String name) bookCategory,
   }) {
@@ -350,7 +366,8 @@ class _$BookCategory implements BookCategory {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String name, String path, String author, String category)?
+    TResult Function(
+            String name, String path, String author, String category, int id)?
         bookModel,
     TResult Function(String name)? bookCategory,
   }) {
@@ -360,7 +377,8 @@ class _$BookCategory implements BookCategory {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String name, String path, String author, String category)?
+    TResult Function(
+            String name, String path, String author, String category, int id)?
         bookModel,
     TResult Function(String name)? bookCategory,
     required TResult orElse(),

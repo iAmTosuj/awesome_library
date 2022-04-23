@@ -9,6 +9,7 @@ class BookListModel with _$BookListModel {
     required String path,
     required String author,
     required String category,
+    required int id,
   }) = BookModel;
 
   factory BookListModel.bookCategory({

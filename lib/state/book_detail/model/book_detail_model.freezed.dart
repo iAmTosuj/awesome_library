@@ -20,6 +20,7 @@ mixin _$BookDetailModel {
   String get name => throw _privateConstructorUsedError;
   String get author => throw _privateConstructorUsedError;
   String get category => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $BookDetailModelCopyWith<BookDetailModel> get copyWith =>
@@ -31,7 +32,7 @@ abstract class $BookDetailModelCopyWith<$Res> {
   factory $BookDetailModelCopyWith(
           BookDetailModel value, $Res Function(BookDetailModel) then) =
       _$BookDetailModelCopyWithImpl<$Res>;
-  $Res call({String url, String name, String author, String category});
+  $Res call({String url, String name, String author, String category, int id});
 }
 
 /// @nodoc
@@ -49,6 +50,7 @@ class _$BookDetailModelCopyWithImpl<$Res>
     Object? name = freezed,
     Object? author = freezed,
     Object? category = freezed,
+    Object? id = freezed,
   }) {
     return _then(_value.copyWith(
       url: url == freezed
@@ -67,6 +69,10 @@ class _$BookDetailModelCopyWithImpl<$Res>
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as String,
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -78,7 +84,7 @@ abstract class _$BookDetailModelCopyWith<$Res>
           _BookDetailModel value, $Res Function(_BookDetailModel) then) =
       __$BookDetailModelCopyWithImpl<$Res>;
   @override
-  $Res call({String url, String name, String author, String category});
+  $Res call({String url, String name, String author, String category, int id});
 }
 
 /// @nodoc
@@ -98,6 +104,7 @@ class __$BookDetailModelCopyWithImpl<$Res>
     Object? name = freezed,
     Object? author = freezed,
     Object? category = freezed,
+    Object? id = freezed,
   }) {
     return _then(_BookDetailModel(
       url: url == freezed
@@ -116,6 +123,10 @@ class __$BookDetailModelCopyWithImpl<$Res>
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as String,
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -127,7 +138,8 @@ class _$_BookDetailModel implements _BookDetailModel {
       {required this.url,
       required this.name,
       required this.author,
-      required this.category});
+      required this.category,
+      required this.id});
 
   @override
   final String url;
@@ -137,10 +149,12 @@ class _$_BookDetailModel implements _BookDetailModel {
   final String author;
   @override
   final String category;
+  @override
+  final int id;
 
   @override
   String toString() {
-    return 'BookDetailModel(url: $url, name: $name, author: $author, category: $category)';
+    return 'BookDetailModel(url: $url, name: $name, author: $author, category: $category, id: $id)';
   }
 
   @override
@@ -151,7 +165,8 @@ class _$_BookDetailModel implements _BookDetailModel {
             const DeepCollectionEquality().equals(other.url, url) &&
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality().equals(other.author, author) &&
-            const DeepCollectionEquality().equals(other.category, category));
+            const DeepCollectionEquality().equals(other.category, category) &&
+            const DeepCollectionEquality().equals(other.id, id));
   }
 
   @override
@@ -160,7 +175,8 @@ class _$_BookDetailModel implements _BookDetailModel {
       const DeepCollectionEquality().hash(url),
       const DeepCollectionEquality().hash(name),
       const DeepCollectionEquality().hash(author),
-      const DeepCollectionEquality().hash(category));
+      const DeepCollectionEquality().hash(category),
+      const DeepCollectionEquality().hash(id));
 
   @JsonKey(ignore: true)
   @override
@@ -173,7 +189,8 @@ abstract class _BookDetailModel implements BookDetailModel {
       {required final String url,
       required final String name,
       required final String author,
-      required final String category}) = _$_BookDetailModel;
+      required final String category,
+      required final int id}) = _$_BookDetailModel;
 
   @override
   String get url => throw _privateConstructorUsedError;
@@ -183,6 +200,8 @@ abstract class _BookDetailModel implements BookDetailModel {
   String get author => throw _privateConstructorUsedError;
   @override
   String get category => throw _privateConstructorUsedError;
+  @override
+  int get id => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$BookDetailModelCopyWith<_BookDetailModel> get copyWith =>

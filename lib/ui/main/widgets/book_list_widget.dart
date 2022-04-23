@@ -15,9 +15,7 @@ class BookListWidget extends StatelessWidget {
               (e) => Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: BookCard(
-                  name: e.name,
-                  author: e.author,
-                  url: e.path,
+                  book: e,
                 ),
               ),
             )
