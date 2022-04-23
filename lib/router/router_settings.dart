@@ -8,7 +8,7 @@ class RouterSettings {
       GoRoute(
         path: RouteInfo.main.path,
         name: RouteInfo.main.name,
-        builder: (context, state) => const MainPage(),
+        builder: (context, state) => MainPage(),
       ),
     ],
   );
