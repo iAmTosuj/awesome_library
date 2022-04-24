@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:get_it/get_it.dart';
 import 'package:library_web/resources/res_colors.dart';
 import 'package:library_web/state/main/MainController.dart';
 import 'package:library_web/state/main/model/book_model.dart';
 import 'package:library_web/ui/main/widgets/book_category_widget.dart';
 import 'package:library_web/ui/main/widgets/book_list_widget.dart';
+import 'package:provider/provider.dart';
 
 class MainPage extends StatelessWidget {
   final TextEditingController _textController = TextEditingController();
@@ -24,12 +25,12 @@ class MainPage extends StatelessWidget {
             TextField(
               controller: _textController,
               onChanged: (value) =>
-                  Get.find<MainController>().onSearchBook(value),
+                  GetIt.instance.get<MainPageNotifier>().onSearchBook(value),
             ),
-            GetBuilder<MainController>(
-                builder: (_) => Column(
+            Consumer<MainPageNotifier>(
+                builder: (_, state, __) => Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: _.bookListModel.map<Widget>((e) {
+                      children: state.bookListModel.map<Widget>((e) {
                         if (e is List<BookModel>) {
                           return BookListWidget(
                             books: e,

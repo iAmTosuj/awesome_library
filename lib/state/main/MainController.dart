@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:get/get.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:library_web/generated/assets.dart';
 import 'package:library_web/state/main/model/book_model.dart';
 
@@ -63,7 +63,7 @@ final List<BookModel> bookModel = [
   ),
 ];
 
-class MainController extends GetxController {
+class MainPageNotifier extends ChangeNotifier {
   Timer? _debounce;
   List<List<BookListModel>> bookListModel = _getFormattedBookList(bookModel);
 
@@ -73,7 +73,7 @@ class MainController extends GetxController {
       bookListModel =
           _getFormattedBookList(_getFilteredBookList(bookModel, query));
 
-      update();
+      notifyListeners();
     });
   }
 }
