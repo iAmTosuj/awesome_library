@@ -1,9 +1,9 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:library_web/resources/res_button_style.dart';
+import 'package:library_web/resources/res_colors.dart';
 import 'package:library_web/router/route_info.dart';
 import 'package:library_web/state/main/model/book_model.dart';
-import 'package:library_web/ui/base/action_button.dart';
 
 class BookCard extends StatelessWidget {
   final BookModel book;
@@ -19,8 +19,8 @@ class BookCard extends StatelessWidget {
       onTap: () => GoRouter.of(context).goNamed(RouteInfo.bookDetail.name,
           params: {'id': book.id.toString()}),
       child: SizedBox(
-        height: 400,
-        width: 200,
+        height: 335,
+        width: 162,
         child: Card(
           elevation: 2,
           clipBehavior: Clip.hardEdge,
@@ -30,51 +30,39 @@ class BookCard extends StatelessWidget {
               Expanded(
                 child: Hero(
                   tag: 'image_${book.id}',
-                  child: SizedBox(
+                  child: CachedNetworkImage(
+                    imageUrl: book.path,
                     width: double.infinity,
-                    child: Image.asset(
-                      book.path,
-                      fit: BoxFit.cover,
-                    ),
+                    height: 224,
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),
               const SizedBox(
-                height: 16,
+                height: 12,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: SelectableText(
+                  book.author,
+                  style: Theme.of(context)
+                      .textTheme
+                      .caption
+                      ?.copyWith(color: ResColors.textSecondary),
+                ),
+              ),
+              const SizedBox(
+                height: 8,
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: SelectableText(
                   book.name,
-                  style: Theme.of(context).textTheme.titleMedium,
+                  style: Theme.of(context).textTheme.bodyText2,
                 ),
               ),
               const SizedBox(
-                height: 8,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: SelectableText(
-                  'Автор: ${book.author}',
-                  style: Theme.of(context).textTheme.subtitle2,
-                ),
-              ),
-              const SizedBox(
-                height: 8,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: SizedBox(
-                  width: double.infinity,
-                  child: ActionButton(
-                    onTap: () {},
-                    text: 'Одолжить',
-                    style: ResButtonStyle.primary,
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 8,
+                height: 12,
               ),
             ],
           ),

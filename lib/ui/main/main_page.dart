@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
+import 'package:library_web/core/injector/d_i.dart';
 import 'package:library_web/resources/res_colors.dart';
 import 'package:library_web/state/main/MainController.dart';
 import 'package:library_web/state/main/model/book_model.dart';
@@ -14,7 +14,7 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ResColors.bgGrey,
+      backgroundColor: ResColors.white,
       appBar: AppBar(
         title: const Text('Потрясающая библиотека'),
       ),
@@ -25,24 +25,25 @@ class MainPage extends StatelessWidget {
             TextField(
               controller: _textController,
               onChanged: (value) =>
-                  GetIt.instance.get<MainPageNotifier>().onSearchBook(value),
+                  DI.find<MainPageNotifier>().onSearchBook(value),
             ),
             Consumer<MainPageNotifier>(
                 builder: (_, state, __) => Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: state.bookListModel.map<Widget>((e) {
-                        if (e is List<BookModel>) {
-                          return BookListWidget(
-                            books: e,
-                          );
-                        }
                         if (e is List<BookCategory>) {
                           return Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 8.0, vertical: 16),
+                            padding:
+                                const EdgeInsets.only(bottom: 24, left: 12),
                             child: BookCategoryWidget(
                               category: e.first.name,
                             ),
+                          );
+                        }
+
+                        if (e is List<BookModel>) {
+                          return BookListWidget(
+                            books: e,
                           );
                         }
 

@@ -6,4 +6,5 @@ class ResColors {
   static const blueSecondary = Color(0xFFe5f2f9);
   static const bluePrimary = Color(0xFF0070c0);
   static const text = Color(0xFF181d21);
+  static const textSecondary = Color(0xFF4E4E4E);
 }

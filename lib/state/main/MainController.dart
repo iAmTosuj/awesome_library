@@ -1,7 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
+import 'package:library_web/core/network_client/main_network_client.dart';
 import 'package:library_web/generated/assets.dart';
+import 'package:library_web/repository/main_books/main_books_repository_impl.dart';
+import 'package:library_web/repository/main_books/model/main_books_response.dart';
 import 'package:library_web/state/main/model/book_model.dart';
 
 final List<BookModel> bookModel = [
@@ -65,7 +68,27 @@ final List<BookModel> bookModel = [
 
 class MainPageNotifier extends ChangeNotifier {
   Timer? _debounce;
-  List<List<BookListModel>> bookListModel = _getFormattedBookList(bookModel);
+  List<List<BookListModel>> bookListModel = [];
+
+  void fetchBook() async {
+    final List<MainBooksResponse> response =
+        await MainBooksRepositoryImply(mainNetworkClient: MainNetworkClient())
+            .getBooks();
+
+    List<BookModel> books = response
+        .map<BookModel>((e) => BookModel(
+              id: e.id,
+              path: 'http://10.0.0.2:1313${e.cover}',
+              name: e.title,
+              category: e.section.title,
+              author:
+                  '${e.authors.first.forename} ${e.authors.first.surname} ${e.authors.first.forename}',
+            ))
+        .toList();
+
+    bookListModel = _getFormattedBookList(books);
+    notifyListeners();
+  }
 
   void onSearchBook(String query) {
     if (_debounce?.isActive ?? false) _debounce?.cancel();

@@ -10,7 +10,7 @@ class BookCategoryWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SelectableText(
       '$category 2: Номер, Название',
-      style: Theme.of(context).textTheme.headline6,
+      style: Theme.of(context).textTheme.headline5,
     );
   }
 }

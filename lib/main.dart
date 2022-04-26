@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:library_web/core/injector/d_i.dart';
+import 'package:library_web/core/injector/inject_dependency.dart';
 import 'package:library_web/resources/res_colors.dart';
 import 'package:library_web/router/router_settings.dart';
 import 'package:library_web/state/main/MainController.dart';
@@ -9,11 +10,7 @@ import 'package:provider/provider.dart';
 
 void main() {
   // TODO: разобраться почему main вызывается на каждый hot reload
-
-  final getIt = GetIt.instance;
-
-  getIt.registerLazySingleton(() => MainPageNotifier());
-
+  injectDependency();
   runApp(AwesomeLibrary());
 }
 
@@ -27,7 +24,7 @@ class AwesomeLibrary extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-            create: (_) => GetIt.instance.get<MainPageNotifier>())
+            create: (_) => DI.find<MainPageNotifier>()..fetchBook())
       ],
       child: MaterialApp.router(
         routeInformationParser: _goRouter.routeInformationParser,
