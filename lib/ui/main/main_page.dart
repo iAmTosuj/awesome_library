@@ -14,27 +14,41 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ResColors.white,
+      backgroundColor: ResColors.bgGrey,
       appBar: AppBar(
-        title: const Text('Потрясающая библиотека'),
+        elevation: 1,
+        centerTitle: true,
+        title: Container(
+          constraints: const BoxConstraints(maxWidth: 600),
+          alignment: Alignment.bottomRight,
+          child: TextField(
+            controller: _textController,
+            decoration: InputDecoration(
+              isDense: true,
+              fillColor: ResColors.bgGray40,
+              labelText: 'Найти',
+              filled: true,
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(4.0),
+              ),
+            ),
+            onChanged: (value) =>
+                DI.find<MainPageNotifier>().onSearchBook(value),
+          ),
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TextField(
-              controller: _textController,
-              onChanged: (value) =>
-                  DI.find<MainPageNotifier>().onSearchBook(value),
-            ),
             Consumer<MainPageNotifier>(
                 builder: (_, state, __) => Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: state.bookListModel.map<Widget>((e) {
                         if (e is List<BookCategory>) {
                           return Padding(
-                            padding:
-                                const EdgeInsets.only(bottom: 24, left: 12),
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 24, horizontal: 12),
                             child: BookCategoryWidget(
                               category: e.first.name,
                             ),
