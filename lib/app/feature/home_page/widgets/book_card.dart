@@ -1,9 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:library_web/resources/res_colors.dart';
-import 'package:library_web/router/route_info.dart';
-import 'package:library_web/state/main/model/book_model.dart';
+import 'package:library_web/app/common/resources/res_colors.dart';
+import 'package:library_web/app/common/router/route_info.dart';
+import 'package:library_web/app/feature/home_page/data/book_model.dart';
 
 class BookCard extends StatelessWidget {
   final BookModel book;
@@ -16,8 +16,8 @@ class BookCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => GoRouter.of(context).goNamed(RouteInfo.bookDetail.name,
-          params: {'id': book.id.toString()}),
+      onTap: () => GoRouter.of(context)
+          .goNamed(RouteInfo.bookDetail.name, params: {'id': book.id.toString()}),
       child: SizedBox(
         height: 335,
         width: 162,
@@ -45,10 +45,8 @@ class BookCard extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: SelectableText(
                   book.author,
-                  style: Theme.of(context)
-                      .textTheme
-                      .caption
-                      ?.copyWith(color: ResColors.textSecondary),
+                  style:
+                      Theme.of(context).textTheme.caption?.copyWith(color: ResColors.textSecondary),
                 ),
               ),
               const SizedBox(

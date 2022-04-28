@@ -1,7 +1,7 @@
 import 'package:go_router/go_router.dart';
-import 'package:library_web/router/route_info.dart';
-import 'package:library_web/ui/book_detail/book_detail_page.dart';
-import 'package:library_web/ui/main/main_page.dart';
+import 'package:library_web/app/common/router/route_info.dart';
+import 'package:library_web/app/feature/book_detail/pages/book_detail_page.dart';
+import 'package:library_web/app/feature/home_page/page/main_page.dart';
 
 class RouterSettings {
   static final router = GoRouter(

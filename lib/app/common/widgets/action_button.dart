@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:library_web/resources/res_button_style.dart';
+import 'package:library_web/app/common/resources/res_button_style.dart';
 
 class ActionButton extends StatelessWidget {
   final ResButtonStyle style;
