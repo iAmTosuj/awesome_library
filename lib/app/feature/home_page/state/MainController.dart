@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:library_web/app/common/network_client/main_network_client.dart';
-import 'package:library_web/app/feature/home_page/data/book_model.dart';
 import 'package:library_web/app/feature/home_page/data/main_books_repository_impl.dart';
+import 'package:library_web/app/feature/home_page/model/book_model.dart';
 import 'package:library_web/app/feature/home_page/model/main_books_response.dart';
 import 'package:library_web/generated/assets.dart';
 
@@ -72,7 +72,8 @@ class MainPageNotifier extends ChangeNotifier {
 
   void fetchBook() async {
     final List<MainBooksResponse> response =
-        await MainBooksRepositoryImply(mainNetworkClient: MainNetworkClient()).getBooks();
+        await MainBooksRepositoryImply(mainNetworkClient: MainNetworkClient())
+            .getBooks();
 
     List<BookModel> books = response
         .map<BookModel>((e) => BookModel(
@@ -86,13 +87,15 @@ class MainPageNotifier extends ChangeNotifier {
         .toList();
 
     bookListModel = _getFormattedBookList(books);
+
     notifyListeners();
   }
 
   void onSearchBook(String query) {
     if (_debounce?.isActive ?? false) _debounce?.cancel();
     _debounce = Timer(const Duration(milliseconds: 500), () {
-      bookListModel = _getFormattedBookList(_getFilteredBookList(bookModel, query));
+      bookListModel =
+          _getFormattedBookList(_getFilteredBookList(bookModel, query));
 
       notifyListeners();
     });

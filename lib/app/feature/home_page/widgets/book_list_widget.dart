@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:library_web/app/feature/home_page/data/book_model.dart';
+import 'package:library_web/app/feature/home_page/model/book_model.dart';
 import 'package:library_web/app/feature/home_page/widgets/book_card.dart';
 
 class BookListWidget extends StatelessWidget {
