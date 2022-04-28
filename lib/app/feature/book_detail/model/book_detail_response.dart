@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:library_web/repository/main_books/model/main_books_author.dart';
-import 'package:library_web/repository/main_books/model/main_books_section.dart';
+import 'package:library_web/app/feature/home_page/model/main_books_author.dart';
+import 'package:library_web/app/feature/home_page/model/main_books_section.dart';
 
 part 'book_detail_response.g.dart';
 
@@ -15,8 +15,8 @@ class BookDetailResponse {
   final int edition;
   final int publicationYear;
 
-  BookDetailResponse(this.id, this.title, this.section, this.authors,
-      this.cover, this.isAvailable, this.edition, this.publicationYear);
+  BookDetailResponse(this.id, this.title, this.section, this.authors, this.cover, this.isAvailable,
+      this.edition, this.publicationYear);
 
   factory BookDetailResponse.fromJson(Map<String, dynamic> json) =>
       _$BookDetailResponseFromJson(json);

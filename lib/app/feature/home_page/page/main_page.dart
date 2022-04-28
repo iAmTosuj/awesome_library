@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:library_web/core/injector/d_i.dart';
-import 'package:library_web/resources/res_colors.dart';
-import 'package:library_web/state/main/MainController.dart';
-import 'package:library_web/state/main/model/book_model.dart';
-import 'package:library_web/ui/main/widgets/book_category_widget.dart';
-import 'package:library_web/ui/main/widgets/book_list_widget.dart';
+import 'package:library_web/app/common/injector/d_i.dart';
+import 'package:library_web/app/common/resources/res_colors.dart';
+import 'package:library_web/app/feature/home_page/data/book_model.dart';
+import 'package:library_web/app/feature/home_page/state/MainController.dart';
+import 'package:library_web/app/feature/home_page/widgets/book_category_widget.dart';
+import 'package:library_web/app/feature/home_page/widgets/book_list_widget.dart';
 import 'package:provider/provider.dart';
 
 class MainPage extends StatelessWidget {
@@ -32,8 +32,7 @@ class MainPage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(4.0),
               ),
             ),
-            onChanged: (value) =>
-                DI.find<MainPageNotifier>().onSearchBook(value),
+            onChanged: (value) => DI.find<MainPageNotifier>().onSearchBook(value),
           ),
         ),
       ),
@@ -47,8 +46,7 @@ class MainPage extends StatelessWidget {
                       children: state.bookListModel.map<Widget>((e) {
                         if (e is List<BookCategory>) {
                           return Padding(
-                            padding: const EdgeInsets.symmetric(
-                                vertical: 24, horizontal: 12),
+                            padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 12),
                             child: BookCategoryWidget(
                               category: e.first.name,
                             ),
