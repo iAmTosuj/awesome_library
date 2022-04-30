@@ -28,14 +28,11 @@ class BookCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(
-                child: Hero(
-                  tag: 'image_${book.id}',
-                  child: CachedNetworkImage(
-                    imageUrl: book.path,
-                    width: double.infinity,
-                    height: 224,
-                    fit: BoxFit.cover,
-                  ),
+                child: CachedNetworkImage(
+                  imageUrl: book.path,
+                  width: double.infinity,
+                  height: 224,
+                  fit: BoxFit.cover,
                 ),
               ),
               const SizedBox(

@@ -9,7 +9,7 @@ class BookCategoryWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SelectableText(
-      '$category 2: Номер, Название',
+      category,
       style: Theme.of(context).textTheme.headline5,
     );
   }

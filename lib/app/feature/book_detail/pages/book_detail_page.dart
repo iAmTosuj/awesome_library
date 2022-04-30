@@ -39,104 +39,155 @@ class BookDetailPage extends StatelessWidget {
                       child: Container(
                         constraints: const BoxConstraints(maxWidth: 700),
                         alignment: Alignment.center,
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                        child: Column(
                           children: [
-                            Hero(
-                              tag: 'image_$id',
-                              child: CachedNetworkImage(
-                                imageUrl:
-                                    'http://10.0.0.2:1313${bookDetailModel.url}',
-                                fit: BoxFit.cover,
-                                height: 300,
-                                width: 168,
-                              ),
-                            ),
-                            const SizedBox(
-                              width: 24,
-                            ),
-                            Expanded(
-                                child: Column(
+                            Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(80),
-                                      color: ResColors.bgGray40,
-                                    ),
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 6, horizontal: 12),
-                                    child: Text(
-                                      bookDetailModel.category,
-                                      style: const TextStyle(
-                                        color: ResColors.textSecondary,
-                                      ),
-                                    )),
-                                const SizedBox(
-                                  height: 8,
-                                ),
-                                Text(
-                                  bookDetailModel.name,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .headline5
-                                      ?.copyWith(
-                                        color: ResColors.text,
-                                      ),
+                                Hero(
+                                  tag: 'image_$id',
+                                  child: CachedNetworkImage(
+                                    imageUrl:
+                                        'http://10.0.0.2:1313${bookDetailModel.url}',
+                                    fit: BoxFit.cover,
+                                    height: 300,
+                                    width: 168,
+                                  ),
                                 ),
                                 const SizedBox(
-                                  height: 8,
+                                  width: 24,
                                 ),
-                                Text(
-                                  bookDetailModel.author,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodyText1
-                                      ?.copyWith(
-                                        color: ResColors.textSecondary,
-                                      ),
-                                ),
-                                const SizedBox(
-                                  height: 8,
-                                ),
-                                Row(
+                                Expanded(
+                                    child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
+                                    Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(80),
+                                          color: ResColors.bgGray40,
+                                        ),
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 6, horizontal: 12),
+                                        child: Text(
+                                          bookDetailModel.category,
+                                          style: const TextStyle(
+                                            color: ResColors.textSecondary,
+                                          ),
+                                        )),
+                                    const SizedBox(
+                                      height: 8,
+                                    ),
+                                    Text(
+                                      bookDetailModel.name,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .headline5
+                                          ?.copyWith(
+                                            color: ResColors.text,
+                                          ),
+                                    ),
+                                    const SizedBox(
+                                      height: 8,
+                                    ),
                                     Text(
                                       bookDetailModel.author,
                                       style: Theme.of(context)
                                           .textTheme
-                                          .bodyText2
+                                          .bodyText1
                                           ?.copyWith(
                                             color: ResColors.textSecondary,
                                           ),
                                     ),
                                     const SizedBox(
-                                      width: 40,
+                                      height: 8,
                                     ),
-                                    Text(
-                                      bookDetailModel.author,
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodyText2
-                                          ?.copyWith(
-                                            color: ResColors.textSecondary,
-                                          ),
+                                    Row(
+                                      children: [
+                                        Text(
+                                          bookDetailModel.author,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyText2
+                                              ?.copyWith(
+                                                color: ResColors.textSecondary,
+                                              ),
+                                        ),
+                                        const SizedBox(
+                                          width: 40,
+                                        ),
+                                        Text(
+                                          bookDetailModel.author,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyText2
+                                              ?.copyWith(
+                                                color: ResColors.textSecondary,
+                                              ),
+                                        ),
+                                      ],
                                     ),
+                                    const SizedBox(
+                                      height: 24,
+                                    ),
+                                    SizedBox(
+                                      width: 152,
+                                      child: ActionButton(
+                                          style: ResButtonStyle.primary,
+                                          onTap: () {},
+                                          text: 'Взять'),
+                                    )
                                   ],
+                                )),
+                                Container(
+                                  height: 300,
+                                  decoration: const BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(8)),
+                                    color: ResColors.bgGrey,
+                                  ),
+                                  child: const Center(
+                                    child: Text(
+                                        'Здесь скоро будет что-то интересное :)'),
+                                  ),
                                 ),
-                                const SizedBox(
-                                  height: 24,
-                                ),
-                                SizedBox(
-                                  width: 152,
-                                  child: ActionButton(
-                                      style: ResButtonStyle.primary,
-                                      onTap: () {},
-                                      text: 'Взять'),
-                                )
                               ],
-                            ))
+                            ),
+                            const SizedBox(
+                              height: 16,
+                            ),
+                            const Divider(),
+                            const SizedBox(
+                              height: 24,
+                            ),
+                            Container(
+                              height: 100,
+                              decoration: const BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(8)),
+                                color: ResColors.bgGrey,
+                              ),
+                              child: const Center(
+                                child: Text(
+                                    'Здесь скоро будет что-то интересное :)'),
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 24,
+                            ),
+                            Container(
+                              height: 150,
+                              decoration: const BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(8)),
+                                color: ResColors.bgGrey,
+                              ),
+                              child: const Center(
+                                child: Text(
+                                    'Здесь скоро будет что-то интересное :)'),
+                              ),
+                            )
                           ],
                         ),
                       ),

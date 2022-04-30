@@ -20,12 +20,12 @@ class ActionButton extends StatelessWidget {
     return SizedBox(
       width: block ? double.infinity : null,
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: onTap,
         style: ButtonStyle(
           backgroundColor: MaterialStateProperty.all(style.backgroundColor),
         ),
         child: Text(
-          'Взять',
+          text,
           style: TextStyle(color: style.textColor),
         ),
       ),

@@ -69,6 +69,7 @@ final List<BookModel> bookModel = [
 class MainPageNotifier extends ChangeNotifier {
   Timer? _debounce;
   List<List<BookListModel>> bookListModel = [];
+  List<BookModel> staticBooksModel = [];
 
   void fetchBook() async {
     final List<MainBooksResponse> response =
@@ -87,6 +88,7 @@ class MainPageNotifier extends ChangeNotifier {
         .toList();
 
     bookListModel = _getFormattedBookList(books);
+    staticBooksModel = books;
 
     notifyListeners();
   }
@@ -95,7 +97,7 @@ class MainPageNotifier extends ChangeNotifier {
     if (_debounce?.isActive ?? false) _debounce?.cancel();
     _debounce = Timer(const Duration(milliseconds: 500), () {
       bookListModel =
-          _getFormattedBookList(_getFilteredBookList(bookModel, query));
+          _getFormattedBookList(_getFilteredBookList(staticBooksModel, query));
 
       notifyListeners();
     });

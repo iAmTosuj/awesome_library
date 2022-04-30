@@ -4,7 +4,7 @@ import 'package:library_web/app/feature/home_page/model/main_books_response.dart
 
 class MainBooksRepositoryImply implements MainBooksRepository {
   final MainNetworkClient _mainNetworkClient;
-  static const path = '/api/bookstore/books';
+  static const path = '/api/bookstore/books/';
 
   const MainBooksRepositoryImply({
     required MainNetworkClient mainNetworkClient,
@@ -14,7 +14,9 @@ class MainBooksRepositoryImply implements MainBooksRepository {
   Future<List<MainBooksResponse>> getBooks() async {
     try {
       final response = await _mainNetworkClient.client.get(path);
-      return response.data.map<MainBooksResponse>((e) => MainBooksResponse.fromJson(e)).toList();
+      return response.data
+          .map<MainBooksResponse>((e) => MainBooksResponse.fromJson(e))
+          .toList();
     } catch (e, stack) {
       rethrow;
     }
