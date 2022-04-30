@@ -8,4 +8,5 @@ class ResColors {
   static const bluePrimary = Color(0xFF0070c0);
   static const text = Color(0xFF181d21);
   static const textSecondary = Color(0xFF4E4E4E);
+  static const warning = Color(0xFFEF933E);
 }

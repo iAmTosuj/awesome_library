@@ -1,8 +1,8 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:library_web/app/common/resources/res_button_style.dart';
 import 'package:library_web/app/common/resources/res_colors.dart';
 import 'package:library_web/app/common/widgets/action_button.dart';
+import 'package:library_web/app/common/widgets/book_preview.dart';
 import 'package:library_web/app/feature/book_detail/model/book_detail_model.dart';
 import 'package:library_web/app/feature/book_detail/state/book_detail_provider.dart';
 import 'package:provider/provider.dart';
@@ -44,15 +44,9 @@ class BookDetailPage extends StatelessWidget {
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Hero(
-                                  tag: 'image_$id',
-                                  child: CachedNetworkImage(
-                                    imageUrl:
-                                        'http://10.0.0.2:1313${bookDetailModel.url}',
-                                    fit: BoxFit.cover,
-                                    height: 300,
-                                    width: 168,
-                                  ),
+                                BookPreview(
+                                  url:
+                                      'http://10.0.0.2:1313${bookDetailModel.url}',
                                 ),
                                 const SizedBox(
                                   width: 24,

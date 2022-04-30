@@ -1,8 +1,8 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:library_web/app/common/resources/res_colors.dart';
 import 'package:library_web/app/common/router/route_info.dart';
+import 'package:library_web/app/common/widgets/book_preview.dart';
 import 'package:library_web/app/feature/home_page/model/book_model.dart';
 
 class BookCard extends StatelessWidget {
@@ -27,13 +27,9 @@ class BookCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Expanded(
-                child: CachedNetworkImage(
-                  imageUrl: book.path,
-                  width: double.infinity,
-                  height: 224,
-                  fit: BoxFit.cover,
-                ),
+              BookPreview(
+                url: book.path,
+                busyDate: '12.03.2022',
               ),
               const SizedBox(
                 height: 12,
