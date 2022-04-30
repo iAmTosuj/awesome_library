@@ -46,11 +46,11 @@ class Layout extends StatelessWidget {
               child: const Padding(
                 padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 8),
                 child: Text(
-                  'Каталог',
+                  'Мои книги',
                   style: TextStyle(color: ResColors.bluePrimary),
                 ),
               ),
-              onTap: () => GoRouter.of(context).goNamed(RouteInfo.main.name),
+              onTap: () => GoRouter.of(context).goNamed(RouteInfo.myBooks.name),
             ),
             const SizedBox(
               width: 24,
@@ -63,6 +63,10 @@ class Layout extends StatelessWidget {
             ),
           ],
         ),
-        body: child);
+        body: SafeArea(
+            child: Center(
+                child: Container(
+                    constraints: const BoxConstraints(maxWidth: 1000),
+                    child: child))));
   }
 }

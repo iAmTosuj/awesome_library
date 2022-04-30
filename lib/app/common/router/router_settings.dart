@@ -6,6 +6,7 @@ import 'package:library_web/app/common/widgets/layout.dart';
 import 'package:library_web/app/feature/book_detail/pages/book_detail_page.dart';
 import 'package:library_web/app/feature/home_page/page/main_page.dart';
 import 'package:library_web/app/feature/login/page/login_page.dart';
+import 'package:library_web/app/feature/my_books/page/my_books_page.dart';
 
 class RouterSettings {
   static final router = GoRouter(
@@ -31,6 +32,13 @@ class RouterSettings {
                 return BookDetailPage(
                   id: id,
                 );
+              },
+            ),
+            GoRoute(
+              path: RouteInfo.myBooks.path,
+              name: RouteInfo.myBooks.name,
+              builder: (context, state) {
+                return const MyBooksPage();
               },
             ),
           ]),

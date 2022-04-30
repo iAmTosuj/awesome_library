@@ -12,6 +12,9 @@ class RouteInfo {
   static final RouteInfo login =
       RouteInfo._(name: 'login', path: '/login', queryParams: {});
 
+  static final RouteInfo myBooks =
+      RouteInfo._(name: 'myBooks', path: 'myBooks', queryParams: {});
+
   RouteInfo._({
     required this.name,
     required this.path,
