@@ -19,24 +19,24 @@ class BookWidget extends StatelessWidget {
               height: 160,
               color: ResColors.bgGray40,
             ),
-            const SizedBox(
-              width: 16,
-            ),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                      'Пыльца феи и другие ингредиенты для приворотного зелья'),
                   const SizedBox(
-                    height: 16,
+                    width: 16,
                   ),
                   const Text('Волшебная принцесса'),
                   const SizedBox(
                     height: 16,
                   ),
+                  const Text(
+                      'Пыльца феи и другие ингредиенты для приворотного зелья'),
+                  const SizedBox(
+                    height: 16,
+                  ),
                   ActionButton(
-                      style: ResButtonStyle.primary,
+                      style: ResButtonStyle.secondary,
                       onTap: () {},
                       text: 'Взять повторно')
                 ],
