@@ -1,7 +1,9 @@
 import 'package:go_router/go_router.dart';
 import 'package:library_web/app/common/injector/d_i.dart';
+import 'package:library_web/app/common/resources/modal_info/res_modal_content.dart';
 import 'package:library_web/app/common/router/app_state.dart';
 import 'package:library_web/app/common/router/route_info.dart';
+import 'package:library_web/app/common/widgets/info_widget.dart';
 import 'package:library_web/app/common/widgets/layout.dart';
 import 'package:library_web/app/feature/book_detail/pages/book_detail_page.dart';
 import 'package:library_web/app/feature/home_page/page/main_page.dart';
@@ -46,6 +48,9 @@ class RouterSettings {
     navigatorBuilder: (context, state, child) {
       return Layout(child: child);
     },
+    errorBuilder: (context, __) => InfoWidget(
+      modalContent: ResModalContent.notFoundInfo,
+    ),
     refreshListenable: DI.find<AppState>(),
     redirect: (state) {
       if (!DI.find<AppState>().isAuth &&
