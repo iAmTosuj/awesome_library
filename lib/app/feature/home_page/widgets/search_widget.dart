@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:library_web/app/common/injector/d_i.dart';
-import 'package:library_web/app/common/resources/res_colors.dart';
-import 'package:library_web/app/common/resources/ui_icon.dart';
+import 'package:library_web/app/common/resources/styles/res_colors.dart';
+import 'package:library_web/app/common/resources/styles/ui_icon.dart';
 import 'package:library_web/app/feature/home_page/state/MainController.dart';
 
 class SearchWidget extends StatelessWidget {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:library_web/app/common/injector/d_i.dart';
 import 'package:library_web/app/common/network_client/main_network_client.dart';
-import 'package:library_web/app/common/resources/res_button_style.dart';
+import 'package:library_web/app/common/resources/styles/res_button_style.dart';
 import 'package:library_web/app/common/router/app_state.dart';
 import 'package:library_web/app/common/widgets/action_button.dart';
 import 'package:library_web/app/feature/login/data/login_provider.dart';

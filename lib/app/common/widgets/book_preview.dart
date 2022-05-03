@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:library_web/app/common/resources/res_colors.dart';
+import 'package:library_web/app/common/resources/styles/res_colors.dart';
 
 class BookPreview extends StatelessWidget {
   final String url;

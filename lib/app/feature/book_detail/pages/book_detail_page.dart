@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:library_web/app/common/data/get_book/get_book_repository.dart';
 import 'package:library_web/app/common/injector/d_i.dart';
-import 'package:library_web/app/common/resources/res_colors.dart';
+import 'package:library_web/app/common/resources/styles/res_colors.dart';
 import 'package:library_web/app/feature/book_detail/data/books_detail_repository.dart';
 import 'package:library_web/app/feature/book_detail/model/book_detail_model.dart';
 import 'package:library_web/app/feature/book_detail/state/book_detail_provider.dart';

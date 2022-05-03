@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:library_web/app/common/resources/res_button_style.dart';
-import 'package:library_web/app/common/resources/res_colors.dart';
+import 'package:library_web/app/common/resources/styles/res_button_style.dart';
+import 'package:library_web/app/common/resources/styles/res_colors.dart';
 import 'package:library_web/app/common/widgets/action_button.dart';
 import 'package:library_web/app/common/widgets/book_preview.dart';
 import 'package:library_web/app/feature/book_detail/model/book_detail_model.dart';

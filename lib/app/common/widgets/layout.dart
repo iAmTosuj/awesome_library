@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:library_web/app/common/resources/res_colors.dart';
-import 'package:library_web/app/common/resources/ui_icon.dart';
+import 'package:library_web/app/common/resources/styles/res_colors.dart';
+import 'package:library_web/app/common/resources/styles/ui_icon.dart';
 import 'package:library_web/app/common/router/route_info.dart';
 import 'package:library_web/app/common/widgets/cursor_pointer_detector.dart';
 

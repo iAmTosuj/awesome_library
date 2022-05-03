@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:library_web/app/common/injector/d_i.dart';
 import 'package:library_web/app/common/injector/inject_dependency.dart';
-import 'package:library_web/app/common/resources/res_colors.dart';
+import 'package:library_web/app/common/resources/styles/res_colors.dart';
 import 'package:library_web/app/common/router/router_settings.dart';
 import 'package:library_web/app/feature/home_page/state/MainController.dart';
 import 'package:provider/provider.dart';
@@ -22,7 +22,10 @@ class AwesomeLibrary extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [ChangeNotifierProvider(create: (_) => DI.find<MainPageNotifier>()..fetchBook())],
+      providers: [
+        ChangeNotifierProvider(
+            create: (_) => DI.find<MainPageNotifier>()..fetchBook())
+      ],
       child: MaterialApp.router(
         routeInformationParser: _goRouter.routeInformationParser,
         routerDelegate: _goRouter.routerDelegate,

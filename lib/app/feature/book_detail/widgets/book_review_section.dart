@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:library_web/app/common/resources/res_colors.dart';
+import 'package:library_web/app/common/resources/styles/res_colors.dart';
 
 class BookReviewSection extends StatelessWidget {
   const BookReviewSection({Key? key}) : super(key: key);

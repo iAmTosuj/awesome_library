@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:library_web/app/common/resources/res_colors.dart';
+import 'package:library_web/app/common/resources/styles/res_colors.dart';
 import 'package:library_web/app/common/router/route_info.dart';
 import 'package:library_web/app/common/widgets/book_preview.dart';
 import 'package:library_web/app/feature/home_page/model/book_model.dart';

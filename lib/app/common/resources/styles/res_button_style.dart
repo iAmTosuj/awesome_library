@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:library_web/app/common/resources/res_colors.dart';
+import 'package:library_web/app/common/resources/styles/res_colors.dart';
 
 class ResButtonStyle {
   final Color backgroundColor;
