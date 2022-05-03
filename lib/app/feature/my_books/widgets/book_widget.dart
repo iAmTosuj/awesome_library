@@ -36,9 +36,10 @@ class BookWidget extends StatelessWidget {
                     height: 16,
                   ),
                   ActionButton(
-                      style: ResButtonStyle.secondary,
-                      onTap: () {},
-                      text: 'Взять повторно')
+                    style: ResButtonStyle.secondary,
+                    onTap: () {},
+                    text: 'Взять повторно',
+                  )
                 ],
               ),
             )

@@ -1,8 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
-import 'package:library_web/app/common/network_client/main_network_client.dart';
-import 'package:library_web/app/feature/home_page/data/main_books_repository_impl.dart';
+import 'package:library_web/app/common/injector/d_i.dart';
+import 'package:library_web/app/common/resources/enums/page_status_enum.dart';
+import 'package:library_web/app/feature/home_page/data/main_books_repository.dart';
 import 'package:library_web/app/feature/home_page/model/book_model.dart';
 import 'package:library_web/app/feature/home_page/model/main_books_response.dart';
 import 'package:library_web/generated/assets.dart';
@@ -68,27 +69,32 @@ final List<BookModel> bookModel = [
 
 class MainPageNotifier extends ChangeNotifier {
   Timer? _debounce;
+  PageStatusEnum pageStatus = PageStatusEnum.loading;
   List<List<BookListModel>> bookListModel = [];
   List<BookModel> staticBooksModel = [];
 
   void fetchBook() async {
-    final List<MainBooksResponse> response =
-        await MainBooksRepositoryImply(mainNetworkClient: MainNetworkClient())
-            .getBooks();
+    try {
+      final List<MainBooksResponse> response =
+          await DI.find<MainBooksRepository>().getBooks();
 
-    List<BookModel> books = response
-        .map<BookModel>((e) => BookModel(
-              id: e.id,
-              path: 'http://10.0.0.2:1313${e.cover}',
-              name: e.title,
-              category: e.section.title,
-              author:
-                  '${e.authors.first.forename} ${e.authors.first.surname} ${e.authors.first.forename}',
-            ))
-        .toList();
+      List<BookModel> books = response
+          .map<BookModel>((e) => BookModel(
+                id: e.id,
+                path: 'http://10.0.0.2:1313${e.cover}',
+                name: e.title,
+                category: e.section.title,
+                author:
+                    '${e.authors.first.forename} ${e.authors.first.surname} ${e.authors.first.forename}',
+              ))
+          .toList();
 
-    bookListModel = _getFormattedBookList(books);
-    staticBooksModel = books;
+      bookListModel = _getFormattedBookList(books);
+      staticBooksModel = books;
+      pageStatus = PageStatusEnum.success;
+    } catch (_) {
+      pageStatus = PageStatusEnum.error;
+    }
 
     notifyListeners();
   }
