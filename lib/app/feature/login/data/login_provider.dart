@@ -13,11 +13,19 @@ class LoginProvider extends ChangeNotifier {
         _appState = appState;
 
   Future<void> login({required String login, required String password}) async {
-    final response = await _mainNetworkClient.client.post(
-      'api/users/login/',
+    // final tokenResponse = await _mainNetworkClient.clientt.get(
+    //   'api/auth/',
+    // );
+    print('-------');
+    await _mainNetworkClient.client.get(
+      'api/auth/',
+    );
+    print('-------');
+    await _mainNetworkClient.client.post(
+      'api/auth/login/',
       data: {'username': login, 'password': password},
     );
-
+    print('-------');
     _appState.setAuthState(true);
   }
 }

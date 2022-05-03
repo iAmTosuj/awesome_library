@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppState extends ChangeNotifier {
-  var isAuth = true;
+  var isAuth = false;
 
   void setAuthState(bool was) {
     isAuth = was;
