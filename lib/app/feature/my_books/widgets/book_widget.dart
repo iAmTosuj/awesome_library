@@ -2,9 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:library_web/app/common/resources/styles/res_button_style.dart';
 import 'package:library_web/app/common/resources/styles/res_colors.dart';
 import 'package:library_web/app/common/widgets/action_button.dart';
+import 'package:library_web/app/feature/my_books/model/my_book_response.dart';
 
 class BookWidget extends StatelessWidget {
-  const BookWidget({Key? key}) : super(key: key);
+  final MyBookResponse myBookResponse;
+
+  const BookWidget({
+    Key? key,
+    required this.myBookResponse,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,19 +32,20 @@ class BookWidget extends StatelessWidget {
                   const SizedBox(
                     width: 16,
                   ),
-                  const Text('Волшебная принцесса'),
+                  Text(myBookResponse.authors.first.forename),
                   const SizedBox(
                     height: 16,
                   ),
-                  const Text(
-                      'Пыльца феи и другие ингредиенты для приворотного зелья'),
+                  Text(
+                    myBookResponse.title,
+                  ),
                   const SizedBox(
                     height: 16,
                   ),
                   ActionButton(
                     style: ResButtonStyle.secondary,
                     onTap: () {},
-                    text: 'Взять повторно',
+                    text: 'Вернуть',
                   )
                 ],
               ),
