@@ -3,6 +3,7 @@ import 'package:library_web/app/feature/home_page/model/book_model.dart';
 import 'package:library_web/app/feature/home_page/state/MainController.dart';
 import 'package:library_web/app/feature/home_page/widgets/book_category_widget.dart';
 import 'package:library_web/app/feature/home_page/widgets/book_list_widget.dart';
+import 'package:library_web/app/feature/home_page/widgets/book_not_found.dart';
 import 'package:library_web/app/feature/home_page/widgets/search_widget.dart';
 import 'package:provider/provider.dart';
 
@@ -19,16 +20,21 @@ class MainPage extends StatelessWidget {
               builder: (_, state, __) => Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Center(
-                        child: Container(
-                          constraints: const BoxConstraints(maxWidth: 600),
-                          margin: const EdgeInsets.only(top: 24),
-                          child: SearchWidget(),
+                      Container(
+                        width: 700,
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 24,
+                          horizontal: 12,
                         ),
+                        child: SearchWidget(),
                       ),
                       if (state.bookListModel.isEmpty)
-                        const Center(
-                          child: Text('По вашему запросу ничего не найдено'),
+                        const Padding(
+                          padding: EdgeInsets.symmetric(
+                            vertical: 24,
+                            horizontal: 12,
+                          ),
+                          child: BookNotFound(),
                         )
                       else
                         ...state.bookListModel.map<Widget>((e) {

@@ -16,6 +16,7 @@ class Layout extends StatelessWidget {
         backgroundColor: ResColors.bgGrey,
         appBar: AppBar(
           toolbarHeight: 42,
+          elevation: 1,
           leading: GoRouter.of(context).location != RouteInfo.main.path
               ? DefaultTextStyle(
                   style: const TextStyle(color: ResColors.bluePrimary),
