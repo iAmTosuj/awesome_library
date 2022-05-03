@@ -3,5 +3,7 @@ class Assets {
   Assets._();
 
   static const String fontsUiIcon = 'assets/fonts/UiIcon.ttf';
+  static const String imagesEternalError = 'assets/images/eternal_error.svg';
+  static const String imagesNotFound = 'assets/images/not_found.svg';
   static const String imagesTn = 'assets/images/tn.jpg';
 }
