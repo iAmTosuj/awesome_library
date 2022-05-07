@@ -37,6 +37,9 @@ class _MainPageState extends State<MainPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Consumer<MainPageNotifier>(builder: (_, state, __) {
+                  print('12341234123');
+                  print(state.pageStatus);
+
                   switch (state.pageStatus) {
                     case PageStatusEnum.loading:
                       return const Center(
@@ -78,7 +81,5 @@ class _MainPageState extends State<MainPage> {
     if (oldWidget.query != widget.query) {
       DI.find<MainPageNotifier>().initProvider(widget.query);
     }
-
-    super.didUpdateWidget(oldWidget);
   }
 }

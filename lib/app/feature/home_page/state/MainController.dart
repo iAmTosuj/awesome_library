@@ -74,11 +74,14 @@ class MainPageNotifier extends ChangeNotifier {
 
   Timer? _debounce;
   PageStatusEnum pageStatus = PageStatusEnum.loading;
+  PageStatusEnum categoryStatus = PageStatusEnum.loading;
   List<List<BookListModel>> bookListModel = [];
   List<BookModel> staticBooksModel = [];
   List<MainBooksSection> category = [];
 
   void initProvider(String query) async {
+    categoryStatus = PageStatusEnum.loading;
+
     try {
       final List<MainBooksSection> sections =
           await DI.find<MainBooksRepository>().getSections();
@@ -91,16 +94,17 @@ class MainPageNotifier extends ChangeNotifier {
       }
 
       category = sections;
+      categoryStatus = PageStatusEnum.success;
 
       fetchBook();
     } catch (_) {
-      pageStatus = PageStatusEnum.error;
+      categoryStatus = PageStatusEnum.error;
     }
-
-    notifyListeners();
   }
 
   void fetchBook() async {
+    changePageStatus(PageStatusEnum.loading);
+
     try {
       final List<MainBooksResponse> response =
           await DI.find<MainBooksRepository>().fetchBooks(selectedSectionId);
@@ -118,10 +122,15 @@ class MainPageNotifier extends ChangeNotifier {
 
       bookListModel = _getFormattedBookList(books);
       staticBooksModel = books;
-      pageStatus = PageStatusEnum.success;
+      changePageStatus(PageStatusEnum.success);
     } catch (_) {
-      pageStatus = PageStatusEnum.error;
+      changePageStatus(PageStatusEnum.error);
     }
+  }
+
+  void changePageStatus(PageStatusEnum pageStatus1) {
+
+    pageStatus = pageStatus1;
 
     notifyListeners();
   }
