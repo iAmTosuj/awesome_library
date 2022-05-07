@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:library_web/app/common/injector/d_i.dart';
 import 'package:library_web/app/common/resources/styles/res_button_style.dart';
 import 'package:library_web/app/common/resources/styles/res_colors.dart';
 import 'package:library_web/app/common/widgets/action_button.dart';
 import 'package:library_web/app/common/widgets/book_preview.dart';
 import 'package:library_web/app/feature/book_detail/model/book_detail_model.dart';
+import 'package:library_web/app/feature/home_page/state/MainController.dart';
 
 class BookInfoWidget extends StatelessWidget {
   final BookDetailModel bookDetailModel;
@@ -17,7 +19,7 @@ class BookInfoWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         BookPreview(
-          url: 'http://10.0.0.2:1313${bookDetailModel.url}',
+          url: 'http://10.0.0.2${bookDetailModel.url}',
         ),
         const SizedBox(
           width: 24,
@@ -86,7 +88,10 @@ class BookInfoWidget extends StatelessWidget {
             SizedBox(
               width: 152,
               child: ActionButton(
-                  style: ResButtonStyle.primary, onTap: () {}, text: 'Взять'),
+                  style: ResButtonStyle.primary,
+                  onTap: () =>
+                      DI.find<MainPageNotifier>().getBook(bookDetailModel.id),
+                  text: 'Взять'),
             )
           ],
         )),

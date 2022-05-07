@@ -5,14 +5,11 @@ import 'package:library_web/app/common/resources/styles/ui_icon.dart';
 import 'package:library_web/app/feature/home_page/state/MainController.dart';
 
 class SearchWidget extends StatelessWidget {
-  final TextEditingController _textController = TextEditingController();
-
-  SearchWidget({Key? key}) : super(key: key);
+  const SearchWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextField(
-      controller: _textController,
       decoration: InputDecoration(
         prefixIcon: const Padding(
           padding: EdgeInsets.only(bottom: 2.0),

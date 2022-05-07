@@ -10,10 +10,12 @@ MainBooksSection _$MainBooksSectionFromJson(Map<String, dynamic> json) =>
     MainBooksSection(
       json['number'] as int,
       json['title'] as String,
+      json['key'] as String,
     );
 
 Map<String, dynamic> _$MainBooksSectionToJson(MainBooksSection instance) =>
     <String, dynamic>{
       'number': instance.number,
       'title': instance.title,
+      'key': instance.key,
     };

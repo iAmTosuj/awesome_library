@@ -23,7 +23,13 @@ class RouterSettings {
       GoRoute(
           path: RouteInfo.main.path,
           name: RouteInfo.main.name,
-          builder: (context, state) => MainPage(),
+          builder: (context, state) {
+            final query = state.queryParams['section'];
+
+            return MainPage(
+              query: query ?? 'empty',
+            );
+          },
           routes: [
             GoRoute(
               path: RouteInfo.bookDetail.path,

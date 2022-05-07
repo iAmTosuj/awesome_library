@@ -3,9 +3,11 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:library_web/app/common/injector/d_i.dart';
 import 'package:library_web/app/common/resources/enums/page_status_enum.dart';
+import 'package:library_web/app/common/router/router_settings.dart';
 import 'package:library_web/app/feature/home_page/data/main_books_repository.dart';
 import 'package:library_web/app/feature/home_page/model/book_model.dart';
 import 'package:library_web/app/feature/home_page/model/main_books_response.dart';
+import 'package:library_web/app/feature/home_page/model/main_books_section.dart';
 import 'package:library_web/generated/assets.dart';
 
 final List<BookModel> bookModel = [
@@ -68,20 +70,45 @@ final List<BookModel> bookModel = [
 ];
 
 class MainPageNotifier extends ChangeNotifier {
+  String selectedSectionId = '1';
+
   Timer? _debounce;
   PageStatusEnum pageStatus = PageStatusEnum.loading;
   List<List<BookListModel>> bookListModel = [];
   List<BookModel> staticBooksModel = [];
+  List<MainBooksSection> category = [];
+
+  void initProvider(String query) async {
+    try {
+      final List<MainBooksSection> sections =
+          await DI.find<MainBooksRepository>().getSections();
+
+      if (!sections.any((element) => element.key == query)) {
+        RouterSettings.router.go('/?section=${sections.first.key}');
+        return;
+      } else {
+        selectedSectionId = query;
+      }
+
+      category = sections;
+
+      fetchBook();
+    } catch (_) {
+      pageStatus = PageStatusEnum.error;
+    }
+
+    notifyListeners();
+  }
 
   void fetchBook() async {
     try {
       final List<MainBooksResponse> response =
-          await DI.find<MainBooksRepository>().getBooks();
+          await DI.find<MainBooksRepository>().fetchBooks(selectedSectionId);
 
       List<BookModel> books = response
           .map<BookModel>((e) => BookModel(
                 id: e.id,
-                path: 'http://10.0.0.2:1313${e.cover}',
+                path: 'http://10.0.0.2${e.cover}',
                 name: e.title,
                 category: e.section.title,
                 author:
@@ -107,6 +134,10 @@ class MainPageNotifier extends ChangeNotifier {
 
       notifyListeners();
     });
+  }
+
+  void getBook(int id) async {
+    await DI.find<MainBooksRepository>().getBook(id);
   }
 }
 

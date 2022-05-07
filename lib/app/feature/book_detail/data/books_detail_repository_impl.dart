@@ -4,7 +4,7 @@ import 'package:library_web/app/feature/book_detail/model/book_detail_response.d
 
 class BookDetailRepositoryImpl implements BookDetailRepository {
   final MainNetworkClient _mainNetworkClient;
-  static const path = '/api/bookstore/books';
+  static const path = '/api/library/books';
 
   const BookDetailRepositoryImpl({
     required MainNetworkClient mainNetworkClient,

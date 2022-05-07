@@ -11,7 +11,7 @@ class MyBooksRepositoryImpl extends MyBooksRepository {
   }) : _mainNetworkClient = mainNetworkClient;
 
   @override
-  Future<List<MyBookResponse>> getBooks() async {
+  Future<List<MyBookResponse>> fetchBooks() async {
     final response = await _mainNetworkClient.client.get(_path);
 
     return response.data.map((e) => MyBookResponse.fromJson(e));
