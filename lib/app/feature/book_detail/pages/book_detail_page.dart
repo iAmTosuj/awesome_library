@@ -31,47 +31,50 @@ class BookDetailPage extends StatelessWidget {
       child: Scaffold(
         backgroundColor: ResColors.white,
         body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.only(top: 40.0),
-            child: Consumer<BookDetailProvider>(
-              builder: (context, state, child) {
-                switch (state.pageStatus) {
-                  case PageStatusEnum.loading:
-                    return const Center(
-                      child: Padding(
-                        padding: EdgeInsets.only(top: 100),
-                        child: CircularProgressIndicator(),
-                      ),
-                    );
+          child: Center(
+            child: Container(
+              padding: const EdgeInsets.only(top: 40.0),
+              width: 1000,
+              child: Consumer<BookDetailProvider>(
+                builder: (context, state, child) {
+                  switch (state.pageStatus) {
+                    case PageStatusEnum.loading:
+                      return const Center(
+                        child: Padding(
+                          padding: EdgeInsets.only(top: 100),
+                          child: CircularProgressIndicator(),
+                        ),
+                      );
 
-                  case PageStatusEnum.error:
-                    return Center(
-                      child:
-                          InfoWidget(modalContent: ResModalContent.errorInfo),
-                    );
+                    case PageStatusEnum.error:
+                      return Center(
+                        child:
+                            InfoWidget(modalContent: ResModalContent.errorInfo),
+                      );
 
-                  case PageStatusEnum.success:
-                    return Column(
-                      children: [
-                        BookInfoWidget(
-                          bookDetailModel: state.bookDetailModel!,
-                        ),
-                        const SizedBox(
-                          height: 16,
-                        ),
-                        const Divider(),
-                        const SizedBox(
-                          height: 24,
-                        ),
-                        const BookDescriptionSection(),
-                        const SizedBox(
-                          height: 24,
-                        ),
-                        const BookReviewSection(),
-                      ],
-                    );
-                }
-              },
+                    case PageStatusEnum.success:
+                      return Column(
+                        children: [
+                          BookInfoWidget(
+                            bookDetailModel: state.bookDetailModel!,
+                          ),
+                          const SizedBox(
+                            height: 16,
+                          ),
+                          const Divider(),
+                          const SizedBox(
+                            height: 24,
+                          ),
+                          const BookDescriptionSection(),
+                          const SizedBox(
+                            height: 24,
+                          ),
+                          const BookReviewSection(),
+                        ],
+                      );
+                  }
+                },
+              ),
             ),
           ),
         ),

@@ -77,8 +77,10 @@ class _MainPageState extends State<MainPage> {
 
   @override
   void didUpdateWidget(MainPage oldWidget) {
-    if (oldWidget.query != widget.query &&
-        RouterSettings.router.location.lastIndexOf(RouteInfo.main.path) == 0) {
+    // TODO: Придумать как обновлять query
+    if ((oldWidget.query != widget.query || widget.query.isEmpty) &&
+        (RouterSettings.router.location.lastIndexOf(RouteInfo.main.path) ==
+            0)) {
       DI.find<MainPageNotifier>().initProvider(widget.query);
     }
 
