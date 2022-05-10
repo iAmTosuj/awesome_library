@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:library_web/app/common/resources/styles/res_colors.dart';
 import 'package:library_web/app/feature/home_page/model/book_model.dart';
 import 'package:library_web/app/feature/home_page/widgets/book_category_widget.dart';
 import 'package:library_web/app/feature/home_page/widgets/book_list_widget.dart';
@@ -16,19 +17,30 @@ class BookSuccessLoaded extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Container(
-          width: 700,
-          padding: const EdgeInsets.symmetric(
-            vertical: 24,
-            horizontal: 12,
+        ColoredBox(
+          color: ResColors.white,
+          child: Row(
+            children: [
+              Container(
+                width: 700,
+                padding: const EdgeInsets.symmetric(
+                  vertical: 8,
+                  horizontal: 42,
+                ),
+                child: const SearchWidget(),
+              ),
+            ],
           ),
-          child: const SearchWidget(),
+        ),
+        Container(
+          height: 1,
+          color: ResColors.bgGray60,
         ),
         if (bookListModel.isEmpty)
           const Padding(
             padding: EdgeInsets.symmetric(
               vertical: 24,
-              horizontal: 12,
+              horizontal: 42,
             ),
             child: BookNotFound(),
           )
@@ -38,7 +50,7 @@ class BookSuccessLoaded extends StatelessWidget {
               return Padding(
                 padding: const EdgeInsets.symmetric(
                   vertical: 24,
-                  horizontal: 12,
+                  horizontal: 42,
                 ),
                 child: BookCategoryWidget(
                   category: e.first.name,
@@ -47,8 +59,13 @@ class BookSuccessLoaded extends StatelessWidget {
             }
 
             if (e is List<BookModel>) {
-              return BookListWidget(
-                books: e,
+              return Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 34,
+                ),
+                child: BookListWidget(
+                  books: e,
+                ),
               );
             }
 
@@ -56,6 +73,5 @@ class BookSuccessLoaded extends StatelessWidget {
           }).toList(),
       ],
     );
-    ;
   }
 }

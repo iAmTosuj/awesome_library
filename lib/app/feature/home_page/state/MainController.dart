@@ -88,6 +88,7 @@ class MainPageNotifier extends ChangeNotifier {
 
       if (!sections.any((element) => element.key == query)) {
         RouterSettings.router.go('/?section=${sections.first.key}');
+
         return;
       } else {
         selectedSectionId = query;
@@ -129,7 +130,6 @@ class MainPageNotifier extends ChangeNotifier {
   }
 
   void changePageStatus(PageStatusEnum pageStatus1) {
-
     pageStatus = pageStatus1;
 
     notifyListeners();

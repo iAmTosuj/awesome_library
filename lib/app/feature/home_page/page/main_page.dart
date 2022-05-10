@@ -3,6 +3,8 @@ import 'package:library_web/app/common/injector/d_i.dart';
 import 'package:library_web/app/common/resources/enums/page_status_enum.dart';
 import 'package:library_web/app/common/resources/modal_info/res_modal_content.dart';
 import 'package:library_web/app/common/resources/styles/res_colors.dart';
+import 'package:library_web/app/common/router/route_info.dart';
+import 'package:library_web/app/common/router/router_settings.dart';
 import 'package:library_web/app/common/widgets/info_widget.dart';
 import 'package:library_web/app/feature/home_page/state/MainController.dart';
 import 'package:library_web/app/feature/home_page/widgets/book_sections.dart';
@@ -29,7 +31,7 @@ class _MainPageState extends State<MainPage> {
         Container(
           width: 1,
           height: double.infinity,
-          color: ResColors.textSecondary,
+          color: ResColors.bgGray60,
         ),
         Expanded(
           child: SingleChildScrollView(
@@ -37,9 +39,6 @@ class _MainPageState extends State<MainPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Consumer<MainPageNotifier>(builder: (_, state, __) {
-                  print('12341234123');
-                  print(state.pageStatus);
-
                   switch (state.pageStatus) {
                     case PageStatusEnum.loading:
                       return const Center(
@@ -78,8 +77,11 @@ class _MainPageState extends State<MainPage> {
 
   @override
   void didUpdateWidget(MainPage oldWidget) {
-    if (oldWidget.query != widget.query) {
+    if (oldWidget.query != widget.query &&
+        RouterSettings.router.location.lastIndexOf(RouteInfo.main.path) == 0) {
       DI.find<MainPageNotifier>().initProvider(widget.query);
     }
+
+    super.didUpdateWidget(oldWidget);
   }
 }

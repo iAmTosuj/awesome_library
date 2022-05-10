@@ -19,7 +19,9 @@ class SearchWidget extends StatelessWidget {
         fillColor: ResColors.bgGray40,
         labelText: 'Найти',
         filled: true,
+        enabledBorder: InputBorder.none,
         border: OutlineInputBorder(
+          borderSide: const BorderSide(width: 1, color: ResColors.bgGray40),
           borderRadius: BorderRadius.circular(4.0),
         ),
       ),
