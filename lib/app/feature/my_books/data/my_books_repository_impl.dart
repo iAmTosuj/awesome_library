@@ -4,7 +4,7 @@ import 'package:library_web/app/feature/my_books/model/my_book_response.dart';
 
 class MyBooksRepositoryImpl extends MyBooksRepository {
   final MainNetworkClient _mainNetworkClient;
-  static const _path = '';
+  static const _path = '/api/profile/books/';
 
   MyBooksRepositoryImpl({
     required MainNetworkClient mainNetworkClient,

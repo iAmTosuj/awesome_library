@@ -3,8 +3,6 @@ import 'package:library_web/app/common/injector/d_i.dart';
 import 'package:library_web/app/common/resources/enums/page_status_enum.dart';
 import 'package:library_web/app/common/resources/modal_info/res_modal_content.dart';
 import 'package:library_web/app/common/resources/styles/res_colors.dart';
-import 'package:library_web/app/common/router/route_info.dart';
-import 'package:library_web/app/common/router/router_settings.dart';
 import 'package:library_web/app/common/widgets/info_widget.dart';
 import 'package:library_web/app/feature/home_page/state/MainController.dart';
 import 'package:library_web/app/feature/home_page/widgets/book_sections.dart';
@@ -78,11 +76,6 @@ class _MainPageState extends State<MainPage> {
   @override
   void didUpdateWidget(MainPage oldWidget) {
     // TODO: Придумать как обновлять query
-    if ((oldWidget.query != widget.query || widget.query.isEmpty) &&
-        (RouterSettings.router.location.lastIndexOf(RouteInfo.main.path) ==
-            0)) {
-      DI.find<MainPageNotifier>().initProvider(widget.query);
-    }
 
     super.didUpdateWidget(oldWidget);
   }

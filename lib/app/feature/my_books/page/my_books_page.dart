@@ -12,7 +12,7 @@ class MyBooksPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (BuildContext context) => MyBookProvider(),
+      create: (BuildContext context) => MyBookProvider()..fetch(),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

@@ -61,15 +61,28 @@ class BookDetailPage extends StatelessWidget {
                           const SizedBox(
                             height: 16,
                           ),
-                          const Divider(),
-                          const SizedBox(
-                            height: 24,
-                          ),
-                          const BookDescriptionSection(),
-                          const SizedBox(
-                            height: 24,
-                          ),
-                          const BookReviewSection(),
+                          Row(
+                            children: [
+                              const SizedBox(
+                                height: 233,
+                              ),
+                              Expanded(
+                                child: Column(
+                                  children: const [
+                                    Divider(),
+                                    SizedBox(
+                                      height: 24,
+                                    ),
+                                    BookDescriptionSection(),
+                                    SizedBox(
+                                      height: 24,
+                                    ),
+                                    BookReviewSection(),
+                                  ],
+                                ),
+                              )
+                            ],
+                          )
                         ],
                       );
                   }

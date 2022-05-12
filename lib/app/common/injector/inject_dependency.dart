@@ -7,6 +7,8 @@ import 'package:library_web/app/feature/book_detail/data/books_detail_repository
 import 'package:library_web/app/feature/home_page/data/main_books_repository.dart';
 import 'package:library_web/app/feature/home_page/data/main_books_repository_impl.dart';
 import 'package:library_web/app/feature/home_page/state/MainController.dart';
+import 'package:library_web/app/feature/my_books/data/my_books_repository.dart';
+import 'package:library_web/app/feature/my_books/data/my_books_repository_impl.dart';
 
 import 'd_i.dart';
 
@@ -22,5 +24,8 @@ injectDependency() async {
   );
   DI.put<MainBooksRepository>(
     MainBooksRepositoryImply(mainNetworkClient: DI.find<MainNetworkClient>()),
+  );
+  DI.put<MyBooksRepository>(
+    MyBooksRepositoryImpl(mainNetworkClient: DI.find<MainNetworkClient>()),
   );
 }

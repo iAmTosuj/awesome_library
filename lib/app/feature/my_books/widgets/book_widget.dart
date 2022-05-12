@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:library_web/app/common/resources/styles/res_button_style.dart';
-import 'package:library_web/app/common/resources/styles/res_colors.dart';
 import 'package:library_web/app/common/widgets/action_button.dart';
+import 'package:library_web/app/common/widgets/book_preview.dart';
 import 'package:library_web/app/feature/my_books/model/my_book_response.dart';
+import 'package:library_web/app/feature/my_books/state/my_book_provider.dart';
+import 'package:provider/provider.dart';
 
 class BookWidget extends StatelessWidget {
   final MyBookResponse myBookResponse;
@@ -20,14 +22,14 @@ class BookWidget extends StatelessWidget {
         elevation: 1,
         child: Row(
           children: [
-            Container(
-              width: 116,
-              height: 160,
-              color: ResColors.bgGray40,
+            BookPreview(url: 'http://10.0.0.2${myBookResponse.cover}'),
+            const SizedBox(
+              width: 8,
             ),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   const SizedBox(
                     width: 16,
@@ -43,8 +45,9 @@ class BookWidget extends StatelessWidget {
                     height: 16,
                   ),
                   ActionButton(
-                    style: ResButtonStyle.secondary,
-                    onTap: () {},
+                    style: ResButtonStyle.primary,
+                    onTap: () => Provider.of<MyBookProvider>(context)
+                        .returnBook(myBookResponse.id),
                     text: 'Вернуть',
                   )
                 ],

@@ -44,4 +44,13 @@ class MainBooksRepositoryImply implements MainBooksRepository {
       rethrow;
     }
   }
+
+  @override
+  Future<void> returnBook(int id) async {
+    try {
+      await _mainNetworkClient.client.post('/api/profile/books/$id/');
+    } catch (e, stack) {
+      rethrow;
+    }
+  }
 }
