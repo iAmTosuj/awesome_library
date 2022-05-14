@@ -57,6 +57,7 @@ class BookDetailPage extends StatelessWidget {
                         children: [
                           BookInfoWidget(
                             bookDetailModel: state.bookDetailModel!,
+                            isLoading: state.isBookLoading,
                           ),
                           const SizedBox(
                             height: 16,

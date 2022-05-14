@@ -8,8 +8,10 @@ import 'package:library_web/app/common/widgets/cursor_pointer_detector.dart';
 
 class Layout extends StatelessWidget {
   final Widget child;
+  final GlobalKey scaffoldKey;
 
-  const Layout({Key? key, required this.child}) : super(key: key);
+  const Layout({Key? key, required this.child, required this.scaffoldKey})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -100,7 +102,8 @@ class Layout extends StatelessWidget {
               ),
             ],
           ),
-          body: SafeArea(child: Center(child: child))),
+          body: ScaffoldMessenger(
+              key: scaffoldKey, child: SafeArea(child: Center(child: child)))),
     );
   }
 }

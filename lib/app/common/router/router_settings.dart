@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:library_web/app/common/injector/d_i.dart';
 import 'package:library_web/app/common/resources/modal_info/res_modal_content.dart';
@@ -11,6 +12,9 @@ import 'package:library_web/app/feature/login/page/login_page.dart';
 import 'package:library_web/app/feature/my_books/page/my_books_page.dart';
 
 class RouterSettings {
+  static final GlobalKey<ScaffoldMessengerState> scaffoldKey =
+      GlobalKey<ScaffoldMessengerState>();
+
   static final router = GoRouter(
     routes: [
       GoRoute(
@@ -52,7 +56,10 @@ class RouterSettings {
           ]),
     ],
     navigatorBuilder: (context, state, child) {
-      return Layout(child: child);
+      return Layout(
+        child: child,
+        scaffoldKey: scaffoldKey,
+      );
     },
     errorBuilder: (context, __) => InfoWidget(
       modalContent: ResModalContent.notFoundInfo,

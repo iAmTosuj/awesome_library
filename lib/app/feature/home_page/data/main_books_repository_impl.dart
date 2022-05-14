@@ -25,15 +25,6 @@ class MainBooksRepositoryImply implements MainBooksRepository {
   }
 
   @override
-  Future<void> getBook(int id) async {
-    try {
-      await _mainNetworkClient.client.post('$path$id/');
-    } catch (e, stack) {
-      rethrow;
-    }
-  }
-
-  @override
   Future<List<MainBooksSection>> getSections() async {
     try {
       final response =

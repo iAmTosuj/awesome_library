@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:library_web/app/common/data/get_book/get_book_repository.dart';
 import 'package:library_web/app/common/resources/enums/page_status_enum.dart';
+import 'package:library_web/app/common/util/show_snack_bar.dart';
 import 'package:library_web/app/feature/book_detail/data/books_detail_repository.dart';
-import 'package:library_web/app/feature/book_detail/model/book_detail_model.dart';
 import 'package:library_web/app/feature/book_detail/model/book_detail_response.dart';
 
 class BookDetailProvider extends ChangeNotifier {
-  BookDetailModel? bookDetailModel;
+  BookDetailResponse? bookDetailModel;
   PageStatusEnum pageStatus = PageStatusEnum.loading;
+  bool isBookLoading = false;
+
   final int id;
   final GetBookRepository _getBookRepository;
   final BookDetailRepository _bookDetailRepository;
@@ -26,13 +28,7 @@ class BookDetailProvider extends ChangeNotifier {
       final BookDetailResponse response =
           await _bookDetailRepository.getBook(id);
 
-      bookDetailModel = BookDetailModel(
-        url: response.cover,
-        id: response.id,
-        category: response.section.title,
-        author: response.authors.first.forename,
-        name: response.title,
-      );
+      bookDetailModel = response;
       pageStatus = PageStatusEnum.success;
     } catch (_) {
       pageStatus = PageStatusEnum.error;
@@ -42,8 +38,22 @@ class BookDetailProvider extends ChangeNotifier {
   }
 
   Future<void> getBook() async {
-    await _getBookRepository.getBook(id);
+    try {
+      changeBookLoadingStatus(true);
 
+      await _getBookRepository.getBook(id);
+
+      showSnackBar(content: 'Вы взяли книгу');
+    } catch (_) {
+      showSnackBar(content: 'Произошла ошибка');
+    }
+
+    changeBookLoadingStatus(false);
+  }
+
+  void changeBookLoadingStatus(bool status) {
+    isBookLoading = status;
+    print(isBookLoading);
     notifyListeners();
   }
 }

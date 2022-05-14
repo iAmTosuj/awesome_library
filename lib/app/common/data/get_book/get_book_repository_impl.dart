@@ -3,7 +3,7 @@ import 'package:library_web/app/common/network_client/main_network_client.dart';
 
 class GetBookRepositoryImpl implements GetBookRepository {
   final MainNetworkClient _mainNetworkClient;
-  static const _path = '';
+  static const _path = '/api/library/books/';
 
   const GetBookRepositoryImpl({
     required MainNetworkClient mainNetworkClient,
@@ -12,8 +12,8 @@ class GetBookRepositoryImpl implements GetBookRepository {
   @override
   Future<void> getBook(int id) async {
     try {
-      await _mainNetworkClient.client.post(_path);
-    } catch (_) {
+      await _mainNetworkClient.client.post('$_path$id/');
+    } catch (e, stack) {
       rethrow;
     }
   }

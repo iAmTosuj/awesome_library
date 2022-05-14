@@ -80,6 +80,7 @@ class _MainPageState extends State<MainPage> {
         RouterSettings.router.location.lastIndexOf('/') == 0) {
       DI.find<MainPageNotifier>().initProvider(widget.query);
     }
+
     super.didUpdateWidget(oldWidget);
   }
 }
