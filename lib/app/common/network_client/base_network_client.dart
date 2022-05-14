@@ -25,6 +25,8 @@ abstract class BaseNetworkClient {
       },
       onError: (DioError e, handler) {
         if (e.response?.statusCode == 403) {
+          document.cookie = '';
+
           DI.find<AppState>().setAuthState(false);
         }
 
